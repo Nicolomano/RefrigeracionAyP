@@ -66,4 +66,21 @@ export async function createProductController (req,res){
     
 }
 
+
+
+export async function deleteProductController(req, res){
+    try {
+        const productId = req.params.pid;
+        const deletedProduct = await productsService.deleteOne(productId);
+        if(deletedProduct){
+            res.status(200).send('Product deleted successfully');
+        }else{
+            res.status(404).send('Product not found');
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal server error');
+    }
+}
+
 export default { getProductsController, getProductByIdController, createProductController }

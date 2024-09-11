@@ -5,6 +5,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import passport from "passport";
 import { faker } from "@faker-js/faker";
+import path from "path";
 
 
 const __filename = fileURLToPath(import.meta.url)
@@ -102,10 +103,11 @@ export const fakeProducts = () =>{
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
-        cb(null, __dirname+'/public/assets')
+        cb(null, path.join(__dirname,'/public/assets'))
     },
     filename: function(req, file, cb){
-        cb(null, file.originalname)
+        const relativePath= `/${file.originalname}`
+        cb(null, relativePath)
     }
 })
 

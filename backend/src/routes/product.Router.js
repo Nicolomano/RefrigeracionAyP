@@ -1,5 +1,5 @@
 import express from "express";
-import { getProductByIdController, getProductsController , createProductController} from "../controllers/product.Controller.js"
+import { getProductByIdController, getProductsController , createProductController, deleteProductController} from "../controllers/product.Controller.js"
 import { authToken, authorization, upload } from "../utils.js";
 
 
@@ -14,7 +14,7 @@ productrouter.get("/:pid", getProductByIdController)
 
 productrouter.post("/", /* authorization('ADMIN') */upload.single('thumbnail'),  createProductController)
 
-productrouter.delete("/:pid",authorization('ADMIN') ,  getProductByIdController)
+productrouter.delete("/:pid",/* authorization('ADMIN') */  deleteProductController)
 
 
 export default productrouter

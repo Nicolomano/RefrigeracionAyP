@@ -2,7 +2,7 @@ import productsModel from "../models/products.js";
 
 
 export default class ProductsServices {
-    getAll = async (page =1 ,limit =10) =>{
+    getAll = async (page =1 ,limit =50) =>{
         const startIndex = (page - 1) * limit;
         const endIndex = page * limit;
         const totalProducts = await productsModel.countDocuments();
@@ -30,4 +30,8 @@ export default class ProductsServices {
         return product
     }
     
+    deleteOne = async (id) => {
+        let result = productsModel.deleteOne({ _id: id})
+        return result
+    }
 }

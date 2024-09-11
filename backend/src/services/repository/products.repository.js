@@ -20,4 +20,8 @@ export default class ProductsRepository {
         return this.dao.findOne(id)
     }
 
+    deleteOne = (id) => {
+        return this.dao.deleteOne(id)
+    }
+
 }

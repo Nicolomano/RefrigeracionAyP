@@ -11,6 +11,8 @@ import cors from "cors";
 import { corsOptions } from "./utils.js";
 import { addLogger } from "./config/logger_CUSTOM.js";
 
+
+
 //import Routers
 import viewRouter from "./routes/views.router.js"
 import cartRouter from "./routes/cartRouter.js";
@@ -47,7 +49,7 @@ app.use(addLogger)
 app.engine("handlebars", handlebars.engine());
 app.set("view engine", "handlebars");
 app.set("views", __dirname + "/views");
-app.use(express.static(__dirname + "/public"));
+app.use('/public',express.static(__dirname + "/assets"));
 
 
 console.log(config);
